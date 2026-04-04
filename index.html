@@ -1667,14 +1667,30 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
         <div class="fc-voice-card">
           <div class="fc-voice-tabs">
             <button class="fc-vtab active" onclick="switchVoiceTab(this,'synth')">🗣️ AI Script</button>
+            <button class="fc-vtab" onclick="switchVoiceTab(this,'record')">🎙️ Record</button>
             <button class="fc-vtab" onclick="switchVoiceTab(this,'upload')">📁 Upload</button>
           </div>
           <div id="fcVoiceSynth" class="fc-voice-panel">
             <p class="fc-panel-desc">Context-aware scripts play via your device's speech engine — automatically adapts for Mom, Police, Doctor, or a generic friend script.</p>
           </div>
+          <div id="fcVoiceRecord" class="fc-voice-panel" style="display:none;">
+            <p class="fc-panel-desc">Record a voice clip. It will loop during the active call for maximum realism.</p>
+            <div class="fc-record-controls">
+              <button id="recordVoiceBtn" class="fc-record-btn" onclick="window._ss.startRecording()">
+                <span class="fc-rec-dot"></span> Record
               </button>
-              
-        
+              <button id="stopRecordBtn" class="fc-stop-btn" onclick="window._ss.stopRecording()" style="display:none;">
+                ⏹ Stop
+              </button>
+              <button id="previewVoiceBtn" class="fc-preview-btn" onclick="window._ss.previewRecordedVoice()" style="display:none;">
+                ▶ Preview
+              </button>
+              <button id="clearVoiceBtn" class="fc-clear-btn" onclick="window._ss.clearRecordedVoice()" style="display:none;">
+                🗑
+              </button>
+            </div>
+            <div id="recordStatus" class="fc-record-status"></div>
+          </div>
           <div id="fcVoiceUpload" class="fc-voice-panel" style="display:none;">
             <p class="fc-panel-desc">Upload any MP3, WAV or OGG file — it will loop as the caller's voice during the active call.</p>
             <div class="fc-upload-row" style="margin-top:10px;">
